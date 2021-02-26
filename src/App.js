@@ -65,17 +65,14 @@ function App() {
 		</li>
 	))
 	
+	
+	
 	function saveRecipe(recipe) {
 		const newRecipe = {name: recipeName, ingredients: ingredients, instructions: instructions, id: recipeName + nanoid()};
 		setRecipes([...recipes, newRecipe])
 		
-		// Reset values
-		setIsCreating(false);
-		setIngredients([]);
-		setInstructions([]);
-		setRecipeName('');
-		setViewingRecipe(false);
-		setRecipeInView([]);
+		discardRecipe();
+		
 	}
 	
 	function discardRecipe() {
@@ -98,7 +95,12 @@ function App() {
 	
 	const viewRecipeTemplate = (
 		<div>
-			<Recipe recipe={recipeInView}/>
+			<Recipe
+				recipe={recipeInView}
+				setRecipes={setRecipes}
+				recipes={recipes}
+				resetValues={discardRecipe}
+			/>
 		</div>
 	)
 	

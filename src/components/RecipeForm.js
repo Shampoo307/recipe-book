@@ -4,7 +4,7 @@ import Form from "./Form";
 export default function RecipeForm(props) {
 	const [validInput, setValidInput] = useState(true);
 	
-	function handleClick(e) {
+	function handleClick() {
 		// Must have name, and at least 1 ingredient and instruction
 		if (props.recipeName !== ''
 		&& props.ingredientList.length !== 0
